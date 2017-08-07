@@ -15,9 +15,11 @@ stamp_list = []
 food_pos = []
 food_stamps = []
 #Set up positions (x,y) of boxes that make up the snake
-turtle.register_shape("clinton1.gif")
+turtle.register_shape("clinton2.gif")
 snake = turtle.clone()
-snake.shape("clinton1s.gif")
+snake.shape("clinton2.gif")
+turtle.resizemode("user")
+snake.turtlesize(0.5, 0.5, 0.5)
 
 #Hide the turtle object (it's an arrow - we don't need to see it)
 turtle.hideturtle()
@@ -35,11 +37,10 @@ for i in range(START_LENGTH):
     new_stamp=snake.stamp()
     stamp_list.append(new_stamp)
     
-
-W_KEY='Up'
-A_KEY='Left'
-S_KEY='Down'
-D_KEY='Right'
+W_KEY='w'
+A_KEY='a'
+S_KEY='s'
+D_KEY='d'
 TIME_STEP=100
 SPACEBAR='space'
 UP=0
@@ -81,6 +82,8 @@ turtle.onkeypress(right,D_KEY)
 turtle.listen()
 
 score=turtle.clone()
+
+
 score.penup()
 score.goto(300,250)
 score1=0
