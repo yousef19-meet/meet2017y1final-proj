@@ -1,6 +1,9 @@
 import turtle
 import random
 turtle.register_shape('trump.gif')
+turtle.shape('trump.gif')
+turtle.resizemode("user")
+turtle.shapesize(-5,-5,0)
 turtle.tracer(1,0) 
 SIZE_X=800
 SIZE_Y=500
