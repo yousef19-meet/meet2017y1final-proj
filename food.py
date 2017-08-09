@@ -1,7 +1,4 @@
 import turtle
-turtle.register_shape("trash.gif")
-trash=turtle.clone()
-trash.shape("trash.gif")
 SIZE_X=800
 SIZE_Y=500
 turtle.penup()
@@ -13,18 +10,18 @@ turtle.setup(SIZE_X,SIZE_Y)
 x_pos=player1.pos()[0] #Get x-position with snake.pos()[0]
 y_pos=player1.pos()[1]
 pos_list = []
-my_pos=(x_pos,y_pos)
 if player1.pos() in food_pos:
-        food_ind=food_pos.index(snake.pos())
-        food.clear stamp(food_stamps[food_ind])
+        food_ind=food_pos.index(player1.pos())
+        food.clear_stamp(food_stamps[food_ind])
 min_x=-int(SIZE_X/3/SQUARE_SIZE)+1
 max_x=int(SIZE_X/3/SQUARE_SIZE)-1
 min_y=-int(SIZE_Y/3/SQUARE_SIZE)-1
 max_y=int(SIZE_Y/3/SQUARE_SIZE)+1
 
 def make_food():
-    turtle.register_shape('food.gif')
-    turtle.shape('food.gif')
+    turtle.register_shape('hamburger.gif')
+    food=turtle.clone()
+    food.shape('hamburger.gif')
    
     min_x=-int(SIZE_X/3/SQUARE_SIZE)+1
     max_x=int(SIZE_X/3/SQUARE_SIZE)-1
