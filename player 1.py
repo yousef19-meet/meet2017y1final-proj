@@ -1,7 +1,7 @@
 import turtle
 import random
-turtle.register_shape('trump.gif')
-turtle.shape('trump.gif')
+turtle.register_shape('trump_small.gif')
+turtle.shape('trump_small.gif')
 turtle.resizemode("user")
 turtle.shapesize(-5,-5,0)
 turtle.tracer(1,0) 
@@ -42,24 +42,28 @@ RIGHT_EDGE=SIZE_X/2
 LEFT_EDGE=SIZE_X/-2
 
 def up():
-    global direction
-    direction=UP
-    print('you pressed the up key!')
+    if direction!=DOWN:
+        global direction
+        direction=UP
+        print('you pressed the up key!')
 
-def left():
-    global direction
-    direction=LEFT
-    print('you pressed the left key!')
+def left():33
+    if direction!=RIGHT:
+        global direction
+        direction=LEFT
+        print('you pressed the left key!')
 
 def down():
-    global direction
-    direction=DOWN
-    print('you pressed the down key!')
+    if direction!=UP:
+        global direction
+        direction=DOWN
+        print('you pressed the down key!')
 
 def right():
-    global direction
-    direction=RIGHT
-    print('you pressed the right key!')
+    if direction!=LEFT:
+        global direction
+        direction=RIGHT
+        print('you pressed the right key!')
     
 
 turtle.onkeypress(up,UP_ARROW)
