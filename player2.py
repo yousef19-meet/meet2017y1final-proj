@@ -1,27 +1,31 @@
 import turtle
 import random
 
-turtle.tracer(1,0) #This helps the turtle move more smoothly
+turtle.pendown()
+turtle.goto(50,50)
+turtle.penup()
+
+turtle.tracer(1,0) 
 SIZE_X=800
 SIZE_Y=500
-turtle.setup(SIZE_X, SIZE_Y) #Curious? It's the turtle window
-#size.
+turtle.setup(SIZE_X, SIZE_Y) 
+
 turtle.penup()
 SQUARE_SIZE = 20
 START_LENGTH = 1
-#Initialize lists
+
 pos_list = []
 stamp_list = []
 food_pos = []
 food_stamps = []
-#Set up positions (x,y) of boxes that make up the snake
+
 turtle.register_shape("clinton2.gif")
 snake = turtle.clone()
 snake.shape("clinton2.gif")
 turtle.resizemode("user")
 snake.turtlesize(0.5, 0.5, 0.5)
 
-#Hide the turtle object (it's an arrow - we don't need to see it)
+
 turtle.hideturtle()
 
 
@@ -55,24 +59,28 @@ RIGHT_EDGE=SIZE_X/2
 LEFT_EDGE=SIZE_X/-2
 
 def up():
-    global direction
-    direction=UP
-    print('you pressed the up key!')
+    if direction !=DOWN:
+        global direction
+        direction=UP
+        print('you pressed the up key!')
 
 def left():
-    global direction
-    direction=LEFT
-    print('you pressed the left key!')
+    if direction !=RIGHT:
+        global direction
+        direction=LEFT
+        print('you pressed the left key!')
 
 def down():
-    global direction
-    direction=DOWN
-    print('you pressed the down key!')
+    if direction !=UP:
+        global direction
+        direction=DOWN
+        print('you pressed the down key!')
 
 def right():
-    global direction
-    direction=RIGHT
-    print('you pressed the right key!')
+    if direction !=LEFT:
+        global direction
+        direction=RIGHT
+        print('you pressed the right key!')
     
 
 turtle.onkeypress(up,W_KEY)
@@ -151,9 +159,7 @@ def move_snake():
         quit()
     
 
-   # my_pos=snake.pos()
-    #new_stamp=snake.stamp()
-    #stamp_list.append(new_stamp)
+ 
     global food_stamps, food_pos
     if snake.pos() in food_pos:
         print(food_stamps)
