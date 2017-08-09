@@ -7,19 +7,22 @@ turtle.shapesize(-5,-5,0)
 turtle.tracer(1,0) 
 SIZE_X=800
 SIZE_Y=500
+
 turtle.setup(SIZE_X, SIZE_Y)
 turtle.penup()
 SQUARE_SIZE=20
 START_LENGTH=1
+trump=turtle.clone()
+turtle.ht()
 
 pos_list=[]
 
 for i in range(START_LENGTH):
-    x_pos=turtle.pos()[0]
-    y_pos=turtle.pos()[1]
+    x_pos=trump.pos()[0]
+    y_pos=trump.pos()[1]
     x_pos+=SQUARE_SIZE
     my_pos=(x_pos,y_pos)
-    turtle.goto(x_pos,y_pos)
+    trump.goto(x_pos,y_pos)
     pos_list.append(my_pos)
     
 
@@ -47,7 +50,7 @@ def up():
         direction=UP
         print('you pressed the up key!')
 
-def left():33
+def left():
     if direction!=RIGHT:
         global direction
         direction=LEFT
@@ -72,27 +75,28 @@ turtle.onkeypress(down,DOWN_ARROW)
 turtle.onkeypress(right,RIGHT_ARROW)
 turtle.listen()
 
-def move_turtle():
+def move_trump():
     global direction 
-    my_pos=turtle.pos()
+    my_pos=trump.pos()
     x_pos=my_pos[0]
     y_pos=my_pos[1]
     
     if direction==RIGHT:
-        turtle.goto(x_pos+SQUARE_SIZE,y_pos)
+        trump.goto(x_pos+SQUARE_SIZE,y_pos)
         print('you moved right!')
     elif direction==LEFT:
-        turtle.goto(x_pos-SQUARE_SIZE,y_pos)
+        trump.goto(x_pos-SQUARE_SIZE,y_pos)
         print('you moved left!')
     elif direction==UP:
-        turtle.goto(x_pos,y_pos+SQUARE_SIZE)
+        trump.goto(x_pos,y_pos+SQUARE_SIZE)
         print('you moved up!')
     elif direction==DOWN:
-       turtle.goto(x_pos,y_pos-SQUARE_SIZE)
+       trump.goto(x_pos,y_pos-SQUARE_SIZE)
        print('you moved down!')
-    turtle.ontimer(move_turtle,100)
-
-move_turtle()
+    turtle.ontimer(move_trump,100)
+    
+     
+move_trump()
        
 
 	
