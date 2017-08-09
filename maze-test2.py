@@ -1,11 +1,12 @@
 import turtle
+turtle.tracer(1,0)
 loading_screen=turtle.clone()
 
-turtle.register_shape("giphy2.gif")
-
-loading_screen.goto(0,0)
-loading_screen.shape("giphy2.gif")
-loading_screen.stamp()
+##turtle.register_shape("giphy2.gif")
+##
+##loading_screen.goto(0,0)
+##loading_screen.shape("giphy2.gif")
+##loading_screen.stamp()
 
 turtle.shape("square")
 turtle.penup()
@@ -107,4 +108,207 @@ for i in range(30):
     pos_List_L.append(my_pos_L)
     new_stamp_L=turtle.stamp()
     stamp_list_L.append(new_stamp_L)
-    
+turtle.goto(-80,300)
+turtle.right(180)
+#####################################
+for i in range(3):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+turtle.right(90)
+for i in range(8):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+    y_pos_L=turtle.pos()[1]
+turtle.goto(-300,180)
+turtle.right(180)
+for i in range(17):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+    y_pos_L=turtle.pos()[1]
+turtle.right(90)
+for i in range(3):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+    y_pos_L=turtle.pos()[1]
+turtle.left(90)
+for i in range(3):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+    y_pos_L=turtle.pos()[1]
+turtle.left(90)
+for i in range(6):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+    y_pos_L=turtle.pos()[1]
+turtle.left(90)
+for i in range(5):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+    y_pos_L=turtle.pos()[1]
+turtle.right(180)
+for i in range(5):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+    y_pos_L=turtle.pos()[1]
+turtle.right(90)
+for i in range(6):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+    y_pos_L=turtle.pos()[1]
+turtle.left(90)
+for i in range(4):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+    y_pos_L=turtle.pos()[1]
+turtle.left(90)
+for i in range(5):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+    y_pos_L=turtle.pos()[1]
+turtle.right(90)
+for i in range(2):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+    y_pos_L=turtle.pos()[1]
+turtle.right(180)
+for i in range(2):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+    y_pos_L=turtle.pos()[1]
+turtle.left(90)
+for i in range(6):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+
+    y_pos_L=turtle.pos()[1]
+turtle.left(90)
+for i in range(3):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+    y_pos_L=turtle.pos()[1]
+turtle.left(90)
+for i in range(3):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+    y_pos_L=turtle.pos()[1]
+turtle.goto(145,300)
+turtle.right(180)
+for i in range(2):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+    y_pos_L=turtle.pos()[1]
+turtle.goto(300,180)
+turtle.right(90)
+for i in range(2):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+    y_pos_L=turtle.pos()[1]
+turtle.goto(300,-160)
+for i in range(3):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+    y_pos_L=turtle.pos()[1]
+turtle.right(90)
+for i in range(7):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+    y_pos_L=turtle.pos()[1]
+turtle.left(90)
+for i in range(6):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+    y_pos_L=turtle.pos()[1]
+turtle.right(90)
+for i in range(4):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+    y_pos_L=turtle.pos()[1]
+turtle.right(180)
+for i in range(4):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+    y_pos_L=turtle.pos()[1]
+turtle.left(90)
+for i in range(3):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+    y_pos_L=turtle.pos()[1]
+turtle.right(90)
+for i in range(7):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+    y_pos_L=turtle.pos()[1]
+turtle.right(180)
+for i in range(7):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+    y_pos_L=turtle.pos()[1]
+turtle.left(90)
+for i in range(11):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+    y_pos_L=turtle.pos()[1]
+turtle.right(90)
+for i in range(3):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+    y_pos_L=turtle.pos()[1]
+turtle.right(90)
+for i in range(3):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+    y_pos_L=turtle.pos()[1]
+turtle.right(180)
+for i in range(3):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+    y_pos_L=turtle.pos()[1]
+turtle.right(90)
+for i in range(3):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+    y_pos_L=turtle.pos()[1]
+turtle.left(90)
+for i in range(6):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+    y_pos_L=turtle.pos()[1]
+turtle.goto(-300,40)
+turtle.right(180)
+for i in range(7):
+    turtle.stamp()
+    turtle.forward(20)
+    x_pos_L=turtle.pos()[0]
+    y_pos_L=turtle.pos()[1]
