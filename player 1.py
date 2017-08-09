@@ -618,6 +618,18 @@ def left():
     global direction
     direction=LEFT
     print('you pressed the left key!')
+##    x_pos=trump.pos()[0]
+##    y_pos=trump.pos()[1]
+##    new_pos=(x_pos-SQUARE_SIZE,y_pos)
+##    if new_pos not in pos_List_L:
+##        direction=LEFT
+##        print('you pressed the left key!')
+##    if direction==LEFT:
+##        new_pos=(x_pos-SQAURE_SIZE,y_pos)
+##        if new_pos in pos_L_List:
+##            move_trump()
+##        else:
+##            trump.goto(new_pos)
 
 def down():
     global direction
@@ -643,17 +655,25 @@ def move_trump():
     y_pos=my_pos[1]
     
     if direction==RIGHT:
-        trump.goto(x_pos+SQUARE_SIZE,y_pos)
+        maybe_pos = (x_pos+SQUARE_SIZE,y_pos)
+        if not maybe_pos in pos_List_L:            
+            trump.goto(x_pos+SQUARE_SIZE,y_pos)
         print('you moved right!')
     elif direction==LEFT:
-        trump.goto(x_pos-SQUARE_SIZE,y_pos)
+        maybe_pos=(x_pos-SQUARE_SIZE,y_pos)
+        if not maybe_pos in pos_List_L:
+            trump.goto(x_pos-SQUARE_SIZE,y_pos)
         print('you moved left!')
     elif direction==UP:
-        trump.goto(x_pos,y_pos+SQUARE_SIZE)
+        maybe_pos=(x_pos,y_pos+SQUARE_SIZE)
+        if not maybe_pos in pos_List_L:
+            trump.goto(x_pos,y_pos+SQUARE_SIZE)
         print('you moved up!')
     elif direction==DOWN:
-       trump.goto(x_pos,y_pos-SQUARE_SIZE)
-       print('you moved down!')
+        maybe_pos=(x_pos,y_pos-SQUARE_SIZE)
+        if not maybe_pos in pos_List_L:
+            trump.goto(x_pos,y_pos-SQUARE_SIZE)
+        print('you moved down!')
     turtle.ontimer(move_trump,100)
     
      
