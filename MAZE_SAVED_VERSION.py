@@ -1,11 +1,12 @@
 import turtle
 turtle.tracer(1,0)
 loading_screen=turtle.clone()
-turtle.register_shape("black_screen1.gif")
 
-loading_screen.goto(0,0)
-loading_screen.shape("black_screen1.gif")
-loading_screen.showturtle()
+##turtle.register_shape("giphy2.gif")
+##
+##loading_screen.goto(0,0)
+##loading_screen.shape("giphy2.gif")
+##loading_screen.stamp()
 
 turtle.shape("square")
 turtle.penup()
@@ -576,5 +577,3 @@ def maze_maker():
 
 
 maze_maker()
-#loading_screen.clearstamp(ls)
-loading_screen.hideturtle()
