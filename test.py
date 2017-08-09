@@ -57,28 +57,24 @@ RIGHT_EDGE=SIZE_X/2
 LEFT_EDGE=SIZE_X/-2
 
 def up():
-    if direction !=DOWN:
-        global direction
-        direction=UP
-        print('you pressed the up key!')
+    global direction
+    direction=UP
+    print('you pressed the up key!')
 
 def left():
-    if direction !=RIGHT:
-        global direction
-        direction=LEFT
-        print('you pressed the left key!')
+    global direction
+    direction=LEFT
+    print('you pressed the left key!')
 
 def down():
-    if direction !=UP:
-        global direction
-        direction=DOWN
-        print('you pressed the down key!')
+    global direction
+    direction=DOWN
+    print('you pressed the down key!')
 
 def right():
-    if direction !=LEFT:
-        global direction
-        direction=RIGHT
-        print('you pressed the right key!')
+    global direction
+    direction=RIGHT
+    print('you pressed the right key!')
     
 
 turtle.onkeypress(up,W_KEY)
