@@ -43,7 +43,7 @@ def maze_maker():
         x_pos_L=turtle.pos()[0]
         y_pos_L=turtle.pos()[1]
         
-        my_pos_R=(round(x_pos),round(y_pos))
+        my_pos_R=(round(x_pos_L),round(y_pos_L))
 
         pos_List_L.append(my_pos_R)
         new_stamp_L=turtle.stamp()
@@ -56,7 +56,7 @@ def maze_maker():
         x_pos_L=turtle.pos()[0]
         y_pos_L=turtle.pos()[1]
         
-        my_pos_R=(round(x_pos),round(y_pos))
+        my_pos_R=(round(x_pos_L),round(y_pos_L))
 
         pos_List_L.append(my_pos_R)
         new_stamp_L=turtle.stamp()
@@ -72,7 +72,7 @@ def maze_maker():
         x_pos_L=turtle.pos()[0]
         y_pos_L=turtle.pos()[1]
         
-        my_pos_D=(round(x_pos),round(y_pos))
+        my_pos_D=(round(x_pos_L),round(y_pos_L))
 
         pos_List_L.append(my_pos_D)
         new_stamp_L=turtle.stamp()
@@ -90,7 +90,7 @@ def maze_maker():
         x_pos_L=turtle.pos()[0]
         y_pos_L=turtle.pos()[1]
         
-        my_pos_L=(round(x_pos),round(y_pos))
+        my_pos_L=(round(x_pos_L),round(y_pos_L))
 
         pos_List_L.append(my_pos_L)
         new_stamp_L=turtle.stamp()
