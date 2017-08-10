@@ -585,6 +585,9 @@ def eat_food():
         food_stamps.pop(food_ind)
         print('you have eaten the food!')
         score1=score1+1
+        score.clear()
+        score.write(score1)
+        
         #write(score1) 
 
 now = time.time()
@@ -627,7 +630,9 @@ def move_trump():
 ##        timer = timer-int(time.time())
 ##        turtle_timer.write(str(timer)+" secondes left")
         
-
+    if trump.pos()==(300,-180) or trump.pos()==(300,-200):
+        you_won.stamp()
+        move_trump.end()
     turtle.ontimer(move_trump,100)
 
     eat_food()
@@ -646,6 +651,7 @@ pos_List_L=[]
 stamp_list_L=[]
 stamp_list=[]
 #turtle.speed(1)
+
 turtle.register_shape('trump_head.gif')
 
 turtle.resizemode("user")
@@ -661,7 +667,7 @@ start_position= (-120,300)
 trump.goto(start_position)
 pos_list=[]
 score1 = 0
-time_limit=5
+time_limit=45
 
 food_stamps=[]
 
@@ -670,13 +676,33 @@ food_pos=[]
 food_list=[]
 turtle.register_shape('hamburger.gif')
 food=turtle.clone()
-food.shape('turtle')
+food.shape('hamburger.gif')
 food.goto(-100,100)
 turtle_timer=turtle.clone()
 turtle_timer.ht()
 #turtle_timer.penup()
 turtle_timer.goto(320,320)
 
+############################
+score=turtle.clone()
+score.penup()
+score.ht()
+score.goto(-300,320)
+############################
+turtle.register_shape('homless.gif')
+homless=turtle.clone()
+homless.shape('homless.gif')
+homless.penup()
+
+homless.goto(300,-185)
+homless.stamp()
+############################
+you_won=turtle.clone()
+turtle.register_shape("you_won.gif")
+you_won.shape("you_won.gif")
+you_won.penup()
+you_won.goto(0,0)
+############################
    
 UP_ARROW='Up'
 LEFT_ARROW='Left'
@@ -745,4 +771,4 @@ for i in range (10):
     make_food()   
      
 move_trump()
-       
+homless.stamp()       
