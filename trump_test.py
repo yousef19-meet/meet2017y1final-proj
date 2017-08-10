@@ -1,3 +1,3 @@
 import turtle
-turtle.register_shape("trump_head.gif")
-turtle.shape("trump_head.gif")
+turtle.register_shape("oie_trans.gif")
+turtle.shape("oie_trans.gif")
