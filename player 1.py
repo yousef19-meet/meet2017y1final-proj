@@ -1,8 +1,6 @@
 import turtle
 import random
 
-
-
 def maze_maker():
     #TOP
     for i in range(7):
@@ -561,92 +559,33 @@ def maze_maker():
         new_stamp_L=turtle.stamp()
         stamp_list_L.append(new_stamp_L)
 
-
-######################################################
-
-turtle.tracer(1,0) 
-SIZE_X=900
-SIZE_Y=900
-turtle.setup(SIZE_X, SIZE_Y)
-turtle.shape("square")
-turtle.penup()
-turtle.goto(-300,300)
-pos_List_L=[]
-stamp_list_L=[]
-stamp_list=[]
-turtle.speed(1)
-maze_maker()
-
-
-turtle.register_shape('trump_small.gif')
-turtle.shape('trump_small.gif')
-turtle.resizemode("user")
-turtle.shapesize(0.05,0.05,0)
-turtle.penup()
-SQUARE_SIZE=20
-START_LENGTH=1
-trump=turtle.clone()
-turtle.ht()
-start_position= (-120,300)
-trump.goto(start_position)
-pos_list=[]
-
+def make_food():
+    min_x=-int(SIZE_X/3/SQUARE_SIZE)+1
+    max_x=int(SIZE_X/3/SQUARE_SIZE)-1
+    min_y=-int(SIZE_Y/3/SQUARE_SIZE)-1
+    max_y=int(SIZE_Y/3/SQUARE_SIZE)+1
     
-UP_ARROW='Up'
-LEFT_ARROW='Left'
-DOWN_ARROW='Down'
-RIGHT_ARROW='Right'
-TIME_STEP=100
-SPACEBAR='space'
-UP=0
-LEFT=1
-DOWN=2
-RIGHT=3
+    food_x=random.randint(min_x,max_x)*SQUARE_SIZE
+    food_y=random.randint(min_y,max_y)*SQUARE_SIZE
+    while (food_x, food_y) in pos_List_L:
+        food_x=random.randint(min_x,max_x)*SQUARE_SIZE
+        food_y=random.randint(min_y,max_y)*SQUARE_SIZE
+    food.goto(food_x,food_y)
+    food_pos.append((food_x, food_y))
+    foodID=food.stamp()
+    food_stamps.append(foodID)
 
-direction=DOWN
-UP_EDGE=SIZE_Y/2
-DOWN_EDGE=SIZE_Y/-2
-RIGHT_EDGE=SIZE_X/2
-LEFT_EDGE=SIZE_X/-2
-
-def up():
-    global direction
-    direction=UP
-    print('you pressed the up key!')
-
-def left():
-    global direction
-    direction=LEFT
-    print('you pressed the left key!')
-##    x_pos=trump.pos()[0]
-##    y_pos=trump.pos()[1]
-##    new_pos=(x_pos-SQUARE_SIZE,y_pos)
-##    if new_pos not in pos_List_L:
-##        direction=LEFT
-##        print('you pressed the left key!')
-##    if direction==LEFT:
-##        new_pos=(x_pos-SQAURE_SIZE,y_pos)
-##        if new_pos in pos_L_List:
-##            move_trump()
-##        else:
-##            trump.goto(new_pos)
-
-def down():
-    global direction
-    direction=DOWN
-    print('you pressed the down key!')
-
-def right():
-    global direction
-    direction=RIGHT
-    print('you pressed the right key!')
-    
-
-turtle.onkeypress(up,UP_ARROW)
-turtle.onkeypress(left,LEFT_ARROW)
-turtle.onkeypress(down,DOWN_ARROW)
-turtle.onkeypress(right,RIGHT_ARROW)
-turtle.listen()
+def eat_food():
+    global score1
+    if trump.pos() in food_pos:
+        print(food_stamps)
+        food_ind=food_pos.index(trump.pos())
+        food.clearstamp(food_stamps[food_ind])
+        food_pos.pop(food_ind)
+        food_stamps.pop(food_ind)
+        print('you have eaten the food!')
+        score1=score1+1
+        #write(score1) 
 
 def move_trump():
     global direction 
@@ -675,52 +614,117 @@ def move_trump():
             trump.goto(x_pos,y_pos-SQUARE_SIZE)
         print('you moved down!')
     turtle.ontimer(move_trump,100)
-    
+
+    eat_food()
+
+
+######################################################
+
+turtle.tracer(1,0) 
+SIZE_X=900
+SIZE_Y=900
+turtle.setup(SIZE_X, SIZE_Y)
+turtle.shape("square")
+turtle.penup()
+turtle.goto(-300,300)
+pos_List_L=[]
+stamp_list_L=[]
+stamp_list=[]
+turtle.speed(1)
+maze_maker()
+
+
+turtle.register_shape('trump_head.gif')
+
+turtle.resizemode("user")
+turtle.penup()
+SQUARE_SIZE=20
+START_LENGTH=1
+trump=turtle.clone()
+trump.shape('trump_head.gif')
+trump.shapesize(0.05,0.05,0)
+
+turtle.ht()
+start_position= (-120,300)
+trump.goto(start_position)
+pos_list=[]
+score1 = 0
+
+food_stamps=[]
+
+turtle.penup()
+food_pos=[]
+food_list=[]
+turtle.register_shape('hamburger.gif')
+food=turtle.clone()
+food.shape('turtle')
+food.goto(-100,100)
+
+   
+UP_ARROW='Up'
+LEFT_ARROW='Left'
+DOWN_ARROW='Down'
+RIGHT_ARROW='Right'
+TIME_STEP=100
+SPACEBAR='space'
+UP=0
+LEFT=1
+DOWN=2
+RIGHT=3
+
+direction=DOWN
+UP_EDGE=SIZE_Y/2
+DOWN_EDGE=SIZE_Y/-2
+RIGHT_EDGE=SIZE_X/2
+LEFT_EDGE=SIZE_X/-2
+
+def up():
+    global direction
+    x_pos=trump.pos()[0]
+    y_pos=trump.pos()[1]
+    new_pos=(x_pos,y_pos+SQUARE_SIZE)
+    if not new_pos in pos_List_L:
+        direction=UP
+        print('you pressed the up key!')
+
+def left():
+    global direction
+    x_pos=trump.pos()[0]
+    y_pos=trump.pos()[1]
+    new_pos=(x_pos-SQUARE_SIZE,y_pos)
+    if not new_pos in pos_List_L:
+        direction=LEFT
+        print('you pressed the left key!')
+ 
+
+def down():
+    global direction
+    x_pos=trump.pos()[0]
+    y_pos=trump.pos()[1]
+    new_pos=(x_pos,y_pos-SQUARE_SIZE)
+    if not new_pos in pos_List_L:
+        direction=DOWN
+        print('you pressed the down key!')
+
+def right():
+    global direction
+    x_pos=trump.pos()[0]
+    y_pos=trump.pos()[1]
+    new_pos=(x_pos+SQUARE_SIZE,y_pos)
+    if not new_pos in pos_List_L:
+        direction=RIGHT
+        print('you pressed the right key!')
+      
+
+turtle.onkeypress(up,UP_ARROW)
+turtle.onkeypress(left,LEFT_ARROW)
+turtle.onkeypress(down,DOWN_ARROW)
+turtle.onkeypress(right,RIGHT_ARROW)
+turtle.listen()
+
+
+for i in range (10):
+    make_food()   
      
 move_trump()
        
-##=======
-    
-##stamp_list=[]
-##food_pos=[]
-##food_list=[]
-##turtle.setup(SIZE_X,SIZE_Y)
-##x_pos=trump.pos()[0] #Get x-position with snake.pos()[0]
-##y_pos=trump.pos()[1]
-##pos_list = []
-##if trump.pos() in food_pos:
-##        food_ind=food_pos.index(trump.pos())
-##        food.clear_stamp(food_stamps[food_ind])
-##min_x=-int(SIZE_X/3/SQUARE_SIZE)+1
-##max_x=int(SIZE_X/3/SQUARE_SIZE)-1
-##min_y=-int(SIZE_Y/3/SQUARE_SIZE)-1
-##max_y=int(SIZE_Y/3/SQUARE_SIZE)+1
-##
-##def make_food():
-##    turtle.register_shape('hamburger.gif')
-##    food=turtle.clone()
-##    food.shape('hamburger.gif')
-##   
-##    min_x=-int(SIZE_X/3/SQUARE_SIZE)+1
-##    max_x=int(SIZE_X/3/SQUARE_SIZE)-1
-##    min_y=-int(SIZE_Y/3/SQUARE_SIZE)-1
-##    max_y=int(SIZE_Y/3/SQUARE_SIZE)+1
-##    
-##    food_x=random.randint(min_x,max_x)*SQUARE_SIZE
-##    food_y=random.randint(min_y,max_y)*SQUARE_SIZE
-##    while food_pos in pos_list:
-##        food_x=random.randint(min_x,max_x)*SQUARE_SIZE
-##        food_y=random.randint(min_y,max_y)*SQUARE_SIZE
-##    food.goto(food_x,food_y)
-##    food_pos.append((food_x, food_y))
-##    foodID=food.stamp()
-##    food_stamps.append(foodID)   
-
-
-	
-
-
-
-
-################################################
-
