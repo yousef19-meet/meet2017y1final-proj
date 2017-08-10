@@ -1,9 +1,9 @@
 import turtle
 import random
 
-turtle.register_shape("clinton2.gif")
+#turtle.register_shape("clinton2.gif")
 
-turtle.shape("clinton2.gif")
+turtle.shape("circle")
 turtle.resizemode("user")
 turtle.turtlesize(0.5, 0.5, 0.5)
 
@@ -107,42 +107,31 @@ def move_clinton():
     
 move_clinton()
 
-food_pos=[(100,100)]
 food_stamps=[]
 
 turtle.penup()
 stamp_list=[]
 food_pos=[]
 food_list=[]
-turtle.setup(SIZE_X,SIZE_Y)
 x_pos=clinton.pos()[0] #Get x-position with snake.pos()[0]
 y_pos=clinton.pos()[1]
 pos_list = []
-if clinton.pos() in food_pos:
-        food_ind=food_pos.index(snake.pos())
-        food.clear_stamp(food_stamps[food_ind])
-min_x=-int(SIZE_X/3/SQUARE_SIZE)+1
-max_x=int(SIZE_X/3/SQUARE_SIZE)-1
-min_y=-int(SIZE_Y/3/SQUARE_SIZE)-1
-max_y=int(SIZE_Y/3/SQUARE_SIZE)+1
-
-
 turtle.register_shape('hamburger.gif')
 food=turtle.clone()
 food.shape('hamburger.gif')
 food.goto(-100,100)
 
 def make_food():
-    global food_stamps, food_pos
+    #global food_stamps, food_pos
     if clinton.pos() in food_pos:
-        print(food_stamps)
         food_ind=food_pos.index(clinton.pos())
         food.clearstamp(food_stamps[food_ind])
         food_pos.pop(food_ind)
         food_stamps.pop(food_ind)
         print('you have eaten the food!')
         score1=score1+1
-        write(score1)   
+        #write(score1)   
+
     min_x=-int(SIZE_X/3/SQUARE_SIZE)+1
     max_x=int(SIZE_X/3/SQUARE_SIZE)-1
     min_y=-int(SIZE_Y/3/SQUARE_SIZE)-1
@@ -150,13 +139,16 @@ def make_food():
     
     food_x=random.randint(min_x,max_x)*SQUARE_SIZE
     food_y=random.randint(min_y,max_y)*SQUARE_SIZE
-    while food_pos in pos_list:
+
+    while (food_x,food_y) in pos_List_L:
         food_x=random.randint(min_x,max_x)*SQUARE_SIZE
         food_y=random.randint(min_y,max_y)*SQUARE_SIZE
+
     food.goto(food_x,food_y)
     food_pos.append((food_x, food_y))
     foodID=food.stamp()
     food_stamps.append(foodID)
+    
 make_food()   
 turtle.mainloop()
 
