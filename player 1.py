@@ -1,6 +1,6 @@
 import turtle
 import random
-
+import time
 def maze_maker():
     #TOP
     for i in range(7):
@@ -588,7 +588,7 @@ def eat_food():
         #write(score1) 
 
 def move_trump():
-    global direction 
+    global direction ,timer
     my_pos=trump.pos()
     x_pos=my_pos[0]
     y_pos=my_pos[1]
@@ -613,6 +613,15 @@ def move_trump():
         if not maybe_pos in pos_List_L:
             trump.goto(x_pos,y_pos-SQUARE_SIZE)
         print('you moved down!')
+    
+    slower = 0
+    while timer > 0:
+        
+        turtle_timer.clear()
+        timer = timer-int(time.time())
+        turtle_timer.write(str(timer)+" secondes left")
+        
+
     turtle.ontimer(move_trump,100)
 
     eat_food()
@@ -630,10 +639,7 @@ turtle.goto(-300,300)
 pos_List_L=[]
 stamp_list_L=[]
 stamp_list=[]
-turtle.speed(1)
-maze_maker()
-
-
+#turtle.speed(1)
 turtle.register_shape('trump_head.gif')
 
 turtle.resizemode("user")
@@ -649,6 +655,7 @@ start_position= (-120,300)
 trump.goto(start_position)
 pos_list=[]
 score1 = 0
+timer=100
 
 food_stamps=[]
 
@@ -659,6 +666,10 @@ turtle.register_shape('hamburger.gif')
 food=turtle.clone()
 food.shape('turtle')
 food.goto(-100,100)
+turtle_timer=turtle.clone()
+turtle_timer.ht()
+#turtle_timer.penup()
+turtle_timer.goto(320,320)
 
    
 UP_ARROW='Up'
@@ -722,6 +733,7 @@ turtle.onkeypress(down,DOWN_ARROW)
 turtle.onkeypress(right,RIGHT_ARROW)
 turtle.listen()
 
+maze_maker()
 
 for i in range (10):
     make_food()   
