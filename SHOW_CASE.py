@@ -776,3 +776,4 @@ for i in range (10):
      
 move_trump()
 homless.stamp()       
+
