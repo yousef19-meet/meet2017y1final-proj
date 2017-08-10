@@ -561,81 +561,40 @@ def maze_maker():
         stamp_list_L.append(new_stamp_L)
 
 
-turtle.tracer(1,0) 
-SIZE_X=900
-SIZE_Y=900
-turtle.setup(SIZE_X, SIZE_Y)
-turtle.shape("square")
-turtle.penup()
-turtle.goto(-300,300)
-pos_List_L=[]
-stamp_list_L=[]
-stamp_list=[]
-turtle.speed(1)
-maze_maker()
-
-
-turtle.register_shape("clinton2.gif")
-turtle.shape("clinton2.gif")
-turtle.resizemode("user")
-turtle.shapesize(0.5, 0.5, 0.5)
-turtle.penup()
-SQUARE_SIZE = 20
-START_LENGTH =1
 clinton=turtle.clone()
-turtle.ht()
-start_position= (-120,300)
-clinton.goto(start_position)
-pos_list=[]
+turtle.register_shape('trump_head.gif')
+clinton.shape('trump_head.gif')
+clinton.shapesize(0.05,0.05,0)
 
 
-W_KEY='w'
-A_KEY='a'
-S_KEY='s'
-D_KEY='d'
-TIME_STEP=100
-UP=0
-LEFT=1
-DOWN=2
-RIGHT=3
+def make_food():
+    min_x=-int(SIZE_X/3/SQUARE_SIZE)+1
+    max_x=int(SIZE_X/3/SQUARE_SIZE)-1
+    min_y=-int(SIZE_Y/3/SQUARE_SIZE)-1
+    max_y=int(SIZE_Y/3/SQUARE_SIZE)+1
 
-direction=DOWN
-UP_EDGE=SIZE_Y/2
-DOWN_EDGE=SIZE_Y/-2
-RIGHT_EDGE=SIZE_X/2
-LEFT_EDGE=SIZE_X/-2
+    food_x=random.randint(min_x,max_x)*SQUARE_SIZE
+    food_y=random.randint(min_y,max_y)*SQUARE_SIZE
+    while (food_x, food_y) in pos_List_L:
+        food_x=random.randint(min_x,max_x)*SQUARE_SIZE
+        food_y=random.randint(min_y,max_y)*SQUARE_SIZE
+    food.goto(food_x,food_y)
+    food_pos.append((food_x, food_y))
+    foodID=food.stamp()
+    food_stamps.append(foodID)
 
-def up():
-    if direction !=DOWN:
-        global direction
-        direction=UP
-        print('you pressed the up key!')
 
-def left():
-    if direction !=RIGHT:
-        global direction
-        direction=LEFT
-        print('you pressed the left key!')
-
-def down():
-    if direction !=UP:
-        global direction
-        direction=DOWN
-        print('you pressed the down key!')
-
-def right():
-    if direction !=LEFT:
-        global direction
-        direction=RIGHT
-        print('you pressed the right key!')
-    
-
-turtle.onkeypress(up,W_KEY)
-turtle.onkeypress(left,A_KEY)
-turtle.onkeypress(down,S_KEY)
-turtle.onkeypress(right,D_KEY)
-turtle.listen()
-
+def eat_food():
+    global score1
+    if clinton.pos() in food_pos:
+        print(food_stamps)
+        food_ind=food_pos.index(trump.pos())
+        food.clearstamp(food_stamps[food_ind])
+        food_pos.pop(food_ind)
+        food_stamps.pop(food_ind)
+        print('you have eaten the food!')
+        score1=score1+1
+        #write(score1)
 
 
 
@@ -667,6 +626,118 @@ def move_clinton():
             clinton.goto(x_pos,y_pos-SQUARE_SIZE)
           print('you moved down!')
     turtle.ontimer(move_clinton,100)
+
+eat_food()
+
+################################################################################
+
+
+
+    
+
+
+turtle.tracer(1,0) 
+SIZE_X=900
+SIZE_Y=900
+turtle.setup(SIZE_X, SIZE_Y)
+turtle.shape("square")
+turtle.penup()
+turtle.goto(-300,300)
+pos_List_L=[]
+stamp_list_L=[]
+stamp_list=[]
+turtle.speed(1)
+maze_maker()
+
+
+turtle.register_shape("oie_trans.gif")
+
+turtle.resizemode("user")
+turtle.penup()
+SQUARE_SIZE=20
+START_LENGTH=1
+
+
+turtle.ht()
+start_position= (-120,300)
+clinton.goto(start_position)
+pos_list=[]
+score1 = 0
+
+
+food_stamps=[]
+
+turtle.penup()
+food_pos=[]
+food_list=[]
+turtle.register_shape('hamburger.gif')
+food=turtle.clone()
+food.shape('turtle')
+food.goto(-100,100)
+
+W_KEY='w'
+A_KEY='a'
+S_KEY='s'
+D_KEY='d'
+TIME_STEP=100
+UP=0
+LEFT=1
+DOWN=2
+RIGHT=3
+
+direction=DOWN
+UP_EDGE=SIZE_Y/2
+DOWN_EDGE=SIZE_Y/-2
+RIGHT_EDGE=SIZE_X/2
+LEFT_EDGE=SIZE_X/-2
+
+def up():
+      global direction
+      x_pos=clinton.pos()[0]
+      y_pos=clinton.pos()[1]
+      new_pos=(x_pos,y_pos+SQUARE_SIZE)
+      if not new_pos in pos_List_L:
+          direction=UP
+          print('you pressed the up key!')
+
+def left():
+        global direction
+        x_pos=clinton.pos()[0]
+        y_pos=clinton.pos()[1]
+        new_pos=(x_pos,y_pos+SQUARE_SIZE)
+        if not new_pos in pos_List_L:
+            direction=LEFT
+            print('you pressed the left key!')
+
+def down():
+        global direction
+        x_pos=clinton.pos()[0]
+        y_pos=clinton.pos()[1]
+        new_pos=(x_pos,y_pos+SQUARE_SIZE)
+        if not new_pos in pos_List_L:
+            direction=DOWN
+            print('you pressed the down key!')
+  
+def right():
+        global direction
+        x_pos=clinton.pos()[0]
+        y_pos=clinton.pos()[1]
+        new_pos=(x_pos,y_pos+SQUARE_SIZE)
+        if not new_pos in pos_List_L:
+            direction=RIGHT
+            print('you pressed the right key!')
+     
+
+turtle.onkeypress(up,W_KEY)
+turtle.onkeypress(left,A_KEY)
+turtle.onkeypress(down,S_KEY)
+turtle.onkeypress(right,D_KEY)
+turtle.listen()
+
+
+
+for i in range (10):
+    make_food()
 
     
 move_clinton()
