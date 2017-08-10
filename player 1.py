@@ -645,7 +645,7 @@ turtle.goto(-300,300)
 pos_List_L=[]
 stamp_list_L=[]
 stamp_list=[]
-#turtle.speed(1)
+turtle.speed(1)
 turtle.register_shape('trump_head.gif')
 
 turtle.resizemode("user")

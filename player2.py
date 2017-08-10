@@ -656,6 +656,9 @@ turtle.resizemode("user")
 turtle.penup()
 SQUARE_SIZE=20
 START_LENGTH=1
+clinton=turtle.clone()
+clinton.shape('oie_trans.gif')
+trump.shapesize(0.05,0.05,0)
 
 
 turtle.ht()
