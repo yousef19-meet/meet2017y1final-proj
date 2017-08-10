@@ -587,6 +587,7 @@ def eat_food():
         score1=score1+1
         #write(score1) 
 
+now = time.time()
 def move_trump():
     global direction ,timer
     my_pos=trump.pos()
@@ -613,13 +614,18 @@ def move_trump():
         if not maybe_pos in pos_List_L:
             trump.goto(x_pos,y_pos-SQUARE_SIZE)
         print('you moved down!')
+
     
-    slower = 0
-    while timer > 0:
-        
-        turtle_timer.clear()
-        timer = timer-int(time.time())
-        turtle_timer.write(str(timer)+" secondes left")
+    
+    turtle_timer.clear()
+    time_left = time_limit-(int(time.time() - now))
+    turtle_timer.write(str(time_left)+" secondes left")
+    if time_left<=0:
+        quit()
+##    while time_left > 0:        
+##        turtle_timer.clear()
+##        timer = timer-int(time.time())
+##        turtle_timer.write(str(timer)+" secondes left")
         
 
     turtle.ontimer(move_trump,100)
@@ -655,7 +661,7 @@ start_position= (-120,300)
 trump.goto(start_position)
 pos_list=[]
 score1 = 0
-timer=100
+time_limit=5
 
 food_stamps=[]
 
