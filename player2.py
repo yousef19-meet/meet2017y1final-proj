@@ -664,6 +664,7 @@ clinton.goto(start_position)
 pos_list=[]
 score1 = 0
 
+
 food_stamps=[]
 
 turtle.penup()
@@ -673,7 +674,6 @@ turtle.register_shape('hamburger.gif')
 food=turtle.clone()
 food.shape('turtle')
 food.goto(-100,100)
-
 
 W_KEY='w'
 A_KEY='a'
