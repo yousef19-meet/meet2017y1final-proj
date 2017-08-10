@@ -578,8 +578,8 @@ turtle.speed(1)
 maze_maker()
 
 
-turtle.register_shape('trump_small.gif')
-turtle.shape('trump_small.gif')
+turtle.register_shape('trump_head.gif')
+turtle.shape('trump_head.gif')
 turtle.resizemode("user")
 turtle.shapesize(0.05,0.05,0)
 turtle.penup()
@@ -611,36 +611,41 @@ LEFT_EDGE=SIZE_X/-2
 
 def up():
     global direction
-    direction=UP
-    print('you pressed the up key!')
+    x_pos=trump.pos()[0]
+    y_pos=trump.pos()[1]
+    new_pos=(x_pos,y_pos+SQUARE_SIZE)
+    if not new_pos in pos_List_L:
+        direction=UP
+        print('you pressed the up key!')
 
 def left():
     global direction
-    direction=LEFT
-    print('you pressed the left key!')
-##    x_pos=trump.pos()[0]
-##    y_pos=trump.pos()[1]
-##    new_pos=(x_pos-SQUARE_SIZE,y_pos)
-##    if new_pos not in pos_List_L:
-##        direction=LEFT
-##        print('you pressed the left key!')
-##    if direction==LEFT:
-##        new_pos=(x_pos-SQAURE_SIZE,y_pos)
-##        if new_pos in pos_L_List:
-##            move_trump()
-##        else:
-##            trump.goto(new_pos)
+    x_pos=trump.pos()[0]
+    y_pos=trump.pos()[1]
+    new_pos=(x_pos-SQUARE_SIZE,y_pos)
+    if not new_pos in pos_List_L:
+        direction=LEFT
+        print('you pressed the left key!')
+ 
 
 def down():
     global direction
-    direction=DOWN
-    print('you pressed the down key!')
+    x_pos=trump.pos()[0]
+    y_pos=trump.pos()[1]
+    new_pos=(x_pos,y_pos-SQUARE_SIZE)
+    if not new_pos in pos_List_L:
+        direction=DOWN
+        print('you pressed the down key!')
 
 def right():
     global direction
-    direction=RIGHT
-    print('you pressed the right key!')
-    
+    x_pos=trump.pos()[0]
+    y_pos=trump.pos()[1]
+    new_pos=(x_pos+SQUARE_SIZE,y_pos)
+    if not new_pos in pos_List_L:
+        direction=RIGHT
+        print('you pressed the right key!')
+      
 
 turtle.onkeypress(up,UP_ARROW)
 turtle.onkeypress(left,LEFT_ARROW)
@@ -680,43 +685,56 @@ def move_trump():
 move_trump()
        
 ##=======
+#################################################  
+stamp_list=[]
+food_pos=[]
+food_list=[]
+turtle.setup(SIZE_X,SIZE_Y)
+x_pos=trump.pos()[0] 
+y_pos=trump.pos()[1]
+pos_list = []
+
+if clinton.pos() in food_pos:
+        food_ind=food_pos.index(snake.pos())
+        food.clear_stamp(food_stamps[food_ind])
+min_x=-int(SIZE_X/3/SQUARE_SIZE)+1
+max_x=int(SIZE_X/3/SQUARE_SIZE)-1
+min_y=-int(SIZE_Y/3/SQUARE_SIZE)-1
+max_y=int(SIZE_Y/3/SQUARE_SIZE)+1
+
+
+turtle.register_shape('hamburger.gif')
+food=turtle.clone()
+food.shape('hamburger.gif')
+food.goto(-100,100)
+
+def make_food():
+    global food_stamps, food_pos
+    if trump.pos() in food_pos:
+        print(food_stamps)
+        food_ind=food_pos.index(trump.pos())
+        food.clearstamp(food_stamps[food_ind])
+        food_pos.pop(food_ind)
+        food_stamps.pop(food_ind)
+        print('you have eaten the food!')
+        score1=score1+1
+        write(score1)   
+    min_x=-int(SIZE_X/3/SQUARE_SIZE)+1
+    max_x=int(SIZE_X/3/SQUARE_SIZE)-1
+    min_y=-int(SIZE_Y/3/SQUARE_SIZE)-1
+    max_y=int(SIZE_Y/3/SQUARE_SIZE)+1
     
-##stamp_list=[]
-##food_pos=[]
-##food_list=[]
-##turtle.setup(SIZE_X,SIZE_Y)
-##x_pos=trump.pos()[0] #Get x-position with snake.pos()[0]
-##y_pos=trump.pos()[1]
-##pos_list = []
-##if trump.pos() in food_pos:
-##        food_ind=food_pos.index(trump.pos())
-##        food.clear_stamp(food_stamps[food_ind])
-##min_x=-int(SIZE_X/3/SQUARE_SIZE)+1
-##max_x=int(SIZE_X/3/SQUARE_SIZE)-1
-##min_y=-int(SIZE_Y/3/SQUARE_SIZE)-1
-##max_y=int(SIZE_Y/3/SQUARE_SIZE)+1
-##
-##def make_food():
-##    turtle.register_shape('hamburger.gif')
-##    food=turtle.clone()
-##    food.shape('hamburger.gif')
-##   
-##    min_x=-int(SIZE_X/3/SQUARE_SIZE)+1
-##    max_x=int(SIZE_X/3/SQUARE_SIZE)-1
-##    min_y=-int(SIZE_Y/3/SQUARE_SIZE)-1
-##    max_y=int(SIZE_Y/3/SQUARE_SIZE)+1
-##    
-##    food_x=random.randint(min_x,max_x)*SQUARE_SIZE
-##    food_y=random.randint(min_y,max_y)*SQUARE_SIZE
-##    while food_pos in pos_list:
-##        food_x=random.randint(min_x,max_x)*SQUARE_SIZE
-##        food_y=random.randint(min_y,max_y)*SQUARE_SIZE
-##    food.goto(food_x,food_y)
-##    food_pos.append((food_x, food_y))
-##    foodID=food.stamp()
-##    food_stamps.append(foodID)   
-
-
+    food_x=random.randint(min_x,max_x)*SQUARE_SIZE
+    food_y=random.randint(min_y,max_y)*SQUARE_SIZE
+    while food_pos in pos_list:
+        food_x=random.randint(min_x,max_x)*SQUARE_SIZE
+        food_y=random.randint(min_y,max_y)*SQUARE_SIZE
+    food.goto(food_x,food_y)
+    food_pos.append((food_x, food_y))
+    foodID=food.stamp()
+    food_stamps.append(foodID)
+make_food()   
+turtle.mainloop()
 	
 
 
